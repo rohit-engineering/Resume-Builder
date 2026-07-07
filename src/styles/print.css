@@ -1,0 +1,92 @@
+/* print.css — import once at the app root (e.g. in main.jsx/App.jsx) */
+
+@media print {
+  /*
+    IMPORTANT — paper size mismatch:
+    This @page rule asks for A4 specifically. Chrome's OWN "Save as
+    PDF" destination honors this and produces an exact A4 PDF.
+    OS-level virtual printers like Windows' "Microsoft Print to PDF"
+    often ignore @page size and fall back to the system default
+    paper size (commonly Letter, which is wider/shorter than A4).
+    When that happens the browser centers our A4-sized content
+    inside the bigger Letter sheet, which is exactly the "shrunk
+    resume with big left/right margins" effect.
+
+    Until the print dialog is open, code cannot force the printer's
+    paper-size selection — that's an OS/driver setting. If you see
+    this happen: in the print dialog, open "More settings" and set
+    Paper size to A4 explicitly, or pick "Save as PDF" (Chrome's
+    built-in option) instead of "Microsoft Print to PDF".
+  */
+  @page {
+    size: 210mm 297mm;
+    margin: 0;
+  }
+
+  html,
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+  }
+
+  /* Kill the live editor's on-screen zoom for print, defense in
+     depth. The editor now scopes printRef to the unscaled inner
+     node so this shouldn't ever fire, but it's a no-cost safety
+     net in case some other wrapper re-applies a transform. */
+  #resume-document {
+    transform: none !important;
+  }
+
+  /* THE COLOR FIX: by default Chrome/Edge/Firefox strip background
+     colors and images from print output unless the "Background
+     graphics" checkbox is ticked in the print dialog — and most
+     people (and most "Save as PDF" / "Microsoft Print to PDF"
+     drivers) never tick it, which is exactly why the navy header
+     and colored section underlines turned white/gray in your PDF.
+     `print-color-adjust: exact` forces the browser to always
+     render backgrounds in print, ignoring that checkbox entirely. */
+  *,
+  *::before,
+  *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  /* Hide everything outside the printable resume by default.
+     If you print the whole app shell, scope this to a wrapper
+     instead of html/body, e.g. body > #print-root * { ... } */
+  .print-pages {
+    gap: 0 !important;
+    display: block !important;
+  }
+
+  /* Each PageEngine "page" div is exactly one physical A4 sheet.
+     Force a hard break after every page except the last, and
+     forbid the browser from ever slicing a page div across two
+     physical sheets — this is what was causing Technical Skills
+     to render its top half on sheet 1 and bottom half on sheet 2. */
+  .print-page {
+    box-shadow: none !important;
+    margin: 0 auto !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    break-after: page !important;
+    page-break-after: always !important;
+    overflow: hidden !important;
+  }
+
+  .print-page:last-child {
+    break-after: auto !important;
+    page-break-after: auto !important;
+  }
+
+  /* Prevent an individual section (e.g. an Experience entry) from
+     being sliced across a break if it ever ends up flush against
+     the bottom of a page div due to a small measurement error. */
+  [data-resume-section] {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}

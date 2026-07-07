@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@keyframes pulseStep {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.25);
+  }
+
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.step-active {
+  animation: pulseStep 0.4s ease;
+}
+
+
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 12px 0;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 999px;
+  transition: all 0.25s ease;
+}
+
+
+.custom-scrollbar:hover::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.35);
+}
+
+
+.custom-scrollbar::-webkit-scrollbar-thumb:active {
+  background: rgba(100, 116, 139, 0.6);
+}
+
+.generated-certification h3,
+.generated-award h3 {
+  font-size: var(--title-size, 14px);
+  margin-bottom: 2px;
+}
+
+.generated-certification p,
+.generated-award p {
+  margin: 0;
+}
+
+.generated-certification a,
+.generated-award a {
+  text-decoration: none;
+}

@@ -1,0 +1,275 @@
+export default {
+  fontFamily:
+    `'Inter', 'Segoe UI', sans-serif`,
+
+  bodyFontSize: "11px",
+
+  lineHeight: 1.5,
+
+  paragraphGap: "5px",
+
+  sectionGap: "22px",
+
+  headingColor: "#0F172A", // Deep Slate for authoritative contrast
+
+  bodyColor: "#334155", // Soft Muted Slate for readability
+
+  accentColor: "#2563EB", // Electric blue utilized strictly for precision anchors
+
+  /*
+   * Header (Refined, Open, & Elegant Layout)
+   */
+
+  header: `
+    pb-6
+    border-b
+    border-slate-200
+  `,
+
+  headerContainer: `
+    flex
+    flex-col
+    gap-2.5
+  `,
+
+  headerLeft: `
+    flex
+    flex-col
+  `,
+
+  name: `
+    text-[32px]
+    font-extrabold
+    tracking-tight
+    text-slate-900
+    leading-tight
+  `,
+
+  jobTitle: `
+    mt-1
+    text-[13px]
+    font-semibold
+    uppercase
+    tracking-[0.1em]
+    text-blue-600
+  `,
+
+  contactContainer: `
+    mt-2
+    flex
+    flex-wrap
+    items-center
+    gap-x-4
+    gap-y-1.5
+    text-[11px]
+    text-slate-500
+  `,
+
+  contactItem: `
+    flex
+    items-center
+    gap-1
+  `,
+
+  contactSeparator: `
+    text-slate-300
+  `,
+
+  contactSeparatorConfig: {
+    type: "text",
+    value: "│", // Sleeker, cleaner partition than standard bullet points
+  },
+
+  linksContainer: `
+    flex
+    flex-wrap
+    items-center
+    gap-x-4
+    gap-y-1.5
+  `,
+
+  link: `
+    text-slate-600
+    hover:text-blue-600
+    no-underline
+    transition-colors
+  `,
+
+  /*
+   * Sections
+   */
+
+  section: `
+    mt-[var(--resume-section-gap)]
+  `,
+
+  sectionTitle: `
+    text-[11px]
+    font-bold
+    uppercase
+    tracking-[0.12em]
+    text-slate-900
+    border-b-2
+    border-slate-900
+    pb-1
+    mb-4
+  `,
+
+  /*
+   * Typography Hierarchy
+   */
+
+  body: `
+    text-[11px]
+    leading-[1.5]
+    text-slate-600
+  `,
+
+  paragraph: `
+    text-[11px]
+    leading-[1.5]
+    text-slate-600
+  `,
+
+  subHeading: `
+    text-[12.5px]
+    font-bold
+    text-slate-900
+  `,
+
+  meta: `
+    text-[10.5px]
+    font-medium
+    text-slate-500
+  `,
+
+  date: `
+    text-[10.5px]
+    font-semibold
+    text-blue-600
+    whitespace-nowrap
+  `,
+
+  small: `
+    text-[10px]
+    text-slate-400
+  `,
+
+  emphasis: `
+    font-semibold
+    text-slate-900
+  `,
+
+  /*
+   * Layout Alignments
+   */
+
+  stack: `
+    flex
+    flex-col
+    gap-3.5
+  `,
+
+  paragraphGroup: `
+    flex
+    flex-col
+    gap-[var(--resume-paragraph-gap)]
+  `,
+
+  item: `
+    break-inside-avoid
+    pb-1
+  `,
+
+  itemHeader: `
+    flex
+    justify-between
+    items-baseline
+    gap-4
+  `,
+
+  itemHeaderContent: `
+    flex-1
+    min-w-0
+  `,
+
+  itemMeta: `
+    flex
+    flex-wrap
+    justify-between
+    items-center
+    gap-x-3
+    mt-0.5
+  `,
+
+  /*
+   * Bullets
+   */
+
+  bulletList: `
+    list-disc
+    pl-4
+    mt-1.5
+    space-y-1
+    text-[11px]
+    leading-[1.5]
+    text-slate-600
+  `,
+
+  bulletItem: `
+    break-inside-avoid
+  `,
+
+  /*
+   * Sidebar Context Integration
+   */
+
+  inlineList: `
+    flex
+    flex-col
+    gap-3
+  `,
+
+  inlineItem: `
+    text-[11px]
+    text-slate-600
+  `,
+
+  listGrid: `
+    flex
+    flex-col
+    gap-3
+  `,
+
+  /*
+   * Skills
+   */
+
+  skills: {
+    layout: "list",
+    columns: 1,
+    compact: true,
+  },
+
+  skillsGrid: `
+    flex
+    flex-col
+    gap-2.5
+  `,
+
+  skillItem: `
+    break-inside-avoid
+  `,
+
+  skillCategory: `
+    font-semibold
+    text-slate-900
+    block
+    mb-0.5
+  `,
+
+  skillContent: `
+    text-[11px]
+    text-slate-600
+  `,
+};
