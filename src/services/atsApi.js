@@ -1,5 +1,11 @@
-const API_BASE_URL =
+const RAW_API_BASE_URL =
   import.meta.env?.VITE_API_BASE_URL || "https://resume-builder-pddl.onrender.com";
+
+// Strip any trailing slash(es) so we never end up with a double slash
+// when concatenating with a path like "/api/ats/analyze". This is what
+// was breaking production: FastAPI treats "//api/ats/analyze" as a
+// different path than "/api/ats/analyze" and returns 404.
+const API_BASE_URL = RAW_API_BASE_URL.replace(/\/+$/, "");
 
 export class ApiError extends Error {
   constructor(message, status, details) {
